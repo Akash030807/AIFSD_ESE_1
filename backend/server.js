@@ -8,7 +8,14 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
+app.options('*', cors());
 app.use(express.json());
 
 // Routes
@@ -24,12 +31,13 @@ app.use('/api/ai', aiRoutes);
 app.get('/', (req, res) => {
   res.json({
     status: 'ok',
-    message: 'Candidate Shortlisting API is running 🚀',
+    message: 'TalentMatch AI — Candidate Shortlisting API 🚀',
+    liveUrl: 'https://aifsd-ese-1.onrender.com',
     endpoints: {
-      addCandidate: 'POST /api/candidates',
-      getCandidates: 'GET /api/candidates',
-      matchCandidates: 'POST /api/match',
-      aiShortlist: 'POST /api/ai/shortlist',
+      addCandidate:    'POST  /api/candidates',
+      getCandidates:   'GET   /api/candidates',
+      matchCandidates: 'POST  /api/match',
+      aiShortlist:     'POST  /api/ai/shortlist',
     },
   });
 });

@@ -87,7 +87,7 @@ Please respond with a JSON object in EXACTLY this format (no markdown, no extra 
         headers: {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
           'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://candidate-shortlisting.onrender.com',
+          'HTTP-Referer': 'https://aifsd-ese-1.onrender.com',
           'X-Title': 'Candidate Shortlisting System',
         },
       }
